@@ -48,7 +48,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="60">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -79,6 +79,8 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="IncomingUnknownFundBasicCheck" sap:VirtualizedContainerService.HintSize="633.6,636.8" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -104,7 +106,7 @@
           <av:PointCollection x:Key="ConnectorLocation">300,214.4 300,244.4 302.4,244.4 302.4,306.4</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Verify T2 Information" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+      <Sequence DisplayName="Verify T2 Information" sap:VirtualizedContainerService.HintSize="4193.6,15332.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:Int32" Default="0" Name="rowEmptyCounter" />
         </Sequence.Variables>
@@ -113,13 +115,13 @@
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="4152,14946.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[configInfo(&quot;FinanceExcelFile&quot;)]">
+        <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="4152,15240" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[configInfo(&quot;FinanceExcelFile&quot;)]">
           <ui:ExcelApplicationScope.Body>
             <ActivityAction x:TypeArguments="ui:WorkbookApplication">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="4118.4,14836.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="4118.4,15130.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="sd:DataTable" Name="IncomingUnknownFund_DT" />
                   <Variable x:TypeArguments="x:Int32" Name="currentRow" />
@@ -160,13 +162,13 @@
                   </ui:ExcelReadRange.Range>
                 </ui:ExcelReadRange>
                 <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="4076.8,60" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[IncomingUnknownFund_DT.Rows.Count]" />
-                <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[IncomingUnknownFund_DT]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="4076.8,2622.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[IncomingUnknownFund_DT]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="4076.8,2730.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                   <ui:ForEachRow.Body>
                     <ActivityAction x:TypeArguments="sd:DataRow">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1356.8,2473.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1139.2,2581.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="x:Boolean" Name="depositMatch" />
                         </Sequence.Variables>
@@ -175,7 +177,7 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1315.2,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1097.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_6">
                           <ui:CommentOut.Body>
                             <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,152.8" sap2010:WorkflowViewState.IdRef="Sequence_39">
                               <sap:WorkflowViewStateService.ViewState>
@@ -193,7 +195,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:CommentOut>
-                        <If Condition="[row(0).ToString.ToLower.Trim().Contains(&quot;s/n&quot;)]" sap:VirtualizedContainerService.HintSize="1315.2,693.6" sap2010:WorkflowViewState.IdRef="If_1">
+                        <If Condition="[row(0).ToString.ToLower.Trim().Contains(&quot;s/n&quot;)]" sap:VirtualizedContainerService.HintSize="1097.6,723.2" sap2010:WorkflowViewState.IdRef="If_1">
                           <If.Then>
                             <Sequence sap:VirtualizedContainerService.HintSize="375.2,544" sap2010:WorkflowViewState.IdRef="Sequence_4">
                               <Sequence.Variables>
@@ -255,18 +257,18 @@
                             </Sequence>
                           </If.Then>
                         </If>
-                        <If Condition="[row(14).ToString.Trim.ToLower.Contains(&quot;submitted&quot;) or row(14).ToString.Trim.ToLower.Contains(&quot;pending adjustment&quot;)]" sap:VirtualizedContainerService.HintSize="1315.2,1554.4" sap2010:WorkflowViewState.IdRef="If_25">
+                        <If Condition="[row(14).ToString.Trim.ToLower.Contains(&quot;submitted&quot;) or row(14).ToString.Trim.ToLower.Contains(&quot;pending adjustment&quot;)]" sap:VirtualizedContainerService.HintSize="1097.6,1632.8" sap2010:WorkflowViewState.IdRef="If_25">
                           <If.Then>
-                            <Sequence sap:VirtualizedContainerService.HintSize="1171.2,1404.8" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                            <Sequence sap:VirtualizedContainerService.HintSize="1062.4,1453.6" sap2010:WorkflowViewState.IdRef="Sequence_38">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:IsMatch BuilderPattern="(NY|ny)[\d]*[ICic]" DisplayName="Is Match" sap:VirtualizedContainerService.HintSize="1129.6,60" sap2010:WorkflowViewState.IdRef="IsMatch_1" Input="[row(15).ToString]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;(NY|ny)[\\d]*[ICic]&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(NY|ny)[\d]*[ICic]" RegexOption="IgnoreCase" Result="[depositMatch]" />
-                              <If Condition="[depositMatch]" sap:VirtualizedContainerService.HintSize="1129.6,1212" sap2010:WorkflowViewState.IdRef="If_24">
+                              <ui:IsMatch BuilderPattern="(NY|ny)[\d]*[ICic]" DisplayName="Is Match" sap:VirtualizedContainerService.HintSize="1020.8,60" sap2010:WorkflowViewState.IdRef="IsMatch_1" Input="[row(15).ToString]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;(NY|ny)[\\d]*[ICic]&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(NY|ny)[\d]*[ICic]" RegexOption="IgnoreCase" Result="[depositMatch]" />
+                              <If Condition="[depositMatch]" sap:VirtualizedContainerService.HintSize="1020.8,1260.8" sap2010:WorkflowViewState.IdRef="If_24">
                                 <If.Then>
-                                  <Sequence sap:VirtualizedContainerService.HintSize="985.6,1062.4" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                                  <Sequence sap:VirtualizedContainerService.HintSize="985.6,1081.6" sap2010:WorkflowViewState.IdRef="Sequence_37">
                                     <Sequence.Variables>
                                       <Variable x:TypeArguments="scg:List(x:String)" Name="tempList" />
                                       <Variable x:TypeArguments="x:String" Name="deposit" />
@@ -284,9 +286,9 @@
                                         <InArgument x:TypeArguments="x:String">[row(15).ToString]</InArgument>
                                       </Assign.Value>
                                     </Assign>
-                                    <If Condition="[dateDepositDictionary.Keys.Contains(Convert.ToDateTime(row(2)).ToString(&quot;ddMMyy&quot;))]" sap:VirtualizedContainerService.HintSize="944,869.6" sap2010:WorkflowViewState.IdRef="If_23">
+                                    <If Condition="[dateDepositDictionary.Keys.Contains(Convert.ToDateTime(row(2)).ToString(&quot;ddMMyy&quot;))]" sap:VirtualizedContainerService.HintSize="944,888.8" sap2010:WorkflowViewState.IdRef="If_23">
                                       <If.Then>
-                                        <Sequence sap:VirtualizedContainerService.HintSize="524.8,720" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                                        <Sequence sap:VirtualizedContainerService.HintSize="524.8,729.6" sap2010:WorkflowViewState.IdRef="Sequence_40">
                                           <Sequence.Variables>
                                             <Variable x:TypeArguments="x:Boolean" Name="valueExist" />
                                           </Sequence.Variables>
@@ -312,7 +314,7 @@
                                             </Assign.Value>
                                           </Assign>
                                           <ExistsInCollection x:TypeArguments="x:String" Collection="[tempList]" DisplayName="Exists In Collection" sap:VirtualizedContainerService.HintSize="483.2,22.4" sap2010:WorkflowViewState.IdRef="ExistsInCollection`1_1" Item="[deposit]" Result="[valueExist]" />
-                                          <If Condition="[valueExist]" sap:VirtualizedContainerService.HintSize="483.2,364.8" sap2010:WorkflowViewState.IdRef="If_22">
+                                          <If Condition="[valueExist]" sap:VirtualizedContainerService.HintSize="483.2,374.4" sap2010:WorkflowViewState.IdRef="If_22">
                                             <If.Else>
                                               <Sequence sap:VirtualizedContainerService.HintSize="304,215.2" sap2010:WorkflowViewState.IdRef="Sequence_35">
                                                 <sap:WorkflowViewStateService.ViewState>
@@ -409,9 +411,9 @@
                     <InArgument x:TypeArguments="x:String">[(Convert.ToInt32(cell) + 1).ToString]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:InterruptibleWhile DisplayName="While" sap:VirtualizedContainerService.HintSize="4076.8,11781.6" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+                <ui:InterruptibleWhile DisplayName="While" sap:VirtualizedContainerService.HintSize="4076.8,11967.2" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
                   <ui:InterruptibleWhile.Body>
-                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="4041.6,11614.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="4041.6,11800" sap2010:WorkflowViewState.IdRef="Sequence_6">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:String" Name="status" />
                       </Sequence.Variables>
@@ -446,12 +448,12 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:CommentOut>
-                      <If Condition="[rowEmptyCounter = 1]" sap:VirtualizedContainerService.HintSize="4000,209.6" sap2010:WorkflowViewState.IdRef="If_5">
+                      <If Condition="[rowEmptyCounter = 1]" sap:VirtualizedContainerService.HintSize="4000,239.2" sap2010:WorkflowViewState.IdRef="If_5">
                         <If.Then>
                           <ui:Break sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Break_2" />
                         </If.Then>
                       </If>
-                      <If Condition="[status.Trim.ToLower().Equals(&quot;submitted&quot;)]" sap:VirtualizedContainerService.HintSize="4000,311.2" sap2010:WorkflowViewState.IdRef="If_2">
+                      <If Condition="[status.Trim.ToLower().Equals(&quot;submitted&quot;)]" sap:VirtualizedContainerService.HintSize="4000,340.8" sap2010:WorkflowViewState.IdRef="If_2">
                         <If.Then>
                           <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="333.6,161.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
                             <ui:MultipleAssign.AssignOperations>
@@ -485,7 +487,7 @@
                           </ui:MultipleAssign>
                         </If.Then>
                       </If>
-                      <If Condition="[status.Trim().ToLower().Contains(&quot;pending adjustment&quot;)]" sap:VirtualizedContainerService.HintSize="4000,311.2" sap2010:WorkflowViewState.IdRef="If_21">
+                      <If Condition="[status.Trim().ToLower().Contains(&quot;pending adjustment&quot;)]" sap:VirtualizedContainerService.HintSize="4000,340.8" sap2010:WorkflowViewState.IdRef="If_21">
                         <If.Then>
                           <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="333.6,161.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
                             <ui:MultipleAssign.AssignOperations>
@@ -519,18 +521,18 @@
                           </ui:MultipleAssign>
                         </If.Then>
                       </If>
-                      <If Condition="[status.Trim.ToLower().Contains(&quot;pending detail&quot;)]" sap:VirtualizedContainerService.HintSize="4000,4678.4" sap2010:WorkflowViewState.IdRef="If_14">
+                      <If Condition="[status.Trim.ToLower().Contains(&quot;pending detail&quot;)]" sap:VirtualizedContainerService.HintSize="4000,4775.2" sap2010:WorkflowViewState.IdRef="If_14">
                         <If.Then>
-                          <If Condition="[dt_Columns &lt; Columns]" sap:VirtualizedContainerService.HintSize="3731.2,4528.8" sap2010:WorkflowViewState.IdRef="If_13">
+                          <If Condition="[dt_Columns &lt; Columns]" sap:VirtualizedContainerService.HintSize="3772.8,4596" sap2010:WorkflowViewState.IdRef="If_13">
                             <If.Then>
-                              <Sequence sap:VirtualizedContainerService.HintSize="538.4,718.4" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                              <Sequence sap:VirtualizedContainerService.HintSize="538.4,612" sap2010:WorkflowViewState.IdRef="Sequence_26">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[dt_Columns]" sap:VirtualizedContainerService.HintSize="496.8,525.6" sap2010:WorkflowViewState.IdRef="Switch`1_2">
-                                  <Sequence x:Key="3" sap:VirtualizedContainerService.HintSize="375.2,251.2" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[dt_Columns]" sap:VirtualizedContainerService.HintSize="496.8,419.2" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                                  <Sequence x:Key="3" sap:VirtualizedContainerService.HintSize="375.2,252.8" sap2010:WorkflowViewState.IdRef="Sequence_24">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -618,7 +620,7 @@
                                       <InArgument x:TypeArguments="x:String">[IncomingUnknownFund_DT(currentRow + count).Item(dt_Columns).ToString()]</InArgument>
                                     </Assign.Value>
                                   </Assign>
-                                  <Sequence x:Key="0" sap:VirtualizedContainerService.HintSize="375.2,251.2" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                                  <Sequence x:Key="0" sap:VirtualizedContainerService.HintSize="375.2,252.8" sap2010:WorkflowViewState.IdRef="Sequence_25">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -662,14 +664,14 @@
                               </Sequence>
                             </If.Then>
                             <If.Else>
-                              <Sequence sap:VirtualizedContainerService.HintSize="3148.8,4379.2" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                              <Sequence sap:VirtualizedContainerService.HintSize="3190.4,4436.8" sap2010:WorkflowViewState.IdRef="Sequence_27">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="3107.2,60" sap2010:WorkflowViewState.IdRef="MessageBox_18" Text="[cell]" />
-                                <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="3107.2,161.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
+                                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="3148.8,60" sap2010:WorkflowViewState.IdRef="MessageBox_18" Text="[cell]" />
+                                <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="3148.8,161.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
                                   <ui:MultipleAssign.AssignOperations>
                                     <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                       <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
@@ -699,7 +701,7 @@
                                     </scg:List>
                                   </ui:MultipleAssign.AssignOperations>
                                 </ui:MultipleAssign>
-                                <If Condition="[rowIsEmpty]" sap:VirtualizedContainerService.HintSize="3107.2,3984.8" sap2010:WorkflowViewState.IdRef="If_18">
+                                <If Condition="[rowIsEmpty]" sap:VirtualizedContainerService.HintSize="3148.8,4042.4" sap2010:WorkflowViewState.IdRef="If_18">
                                   <If.Then>
                                     <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="333.6,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_7">
                                       <ui:MultipleAssign.AssignOperations>
@@ -725,18 +727,18 @@
                                     </ui:MultipleAssign>
                                   </If.Then>
                                   <If.Else>
-                                    <If Condition="[String.IsNullOrEmpty(depositID) or String.IsNullOrEmpty(date_received) or String.IsNullOrEmpty(accountCode) or String.IsNullOrEmpty(costCentre) or String.IsNullOrEmpty(Description)]" sap:VirtualizedContainerService.HintSize="2729.6,3835.2" sap2010:WorkflowViewState.IdRef="If_17">
+                                    <If Condition="[String.IsNullOrEmpty(depositID) or String.IsNullOrEmpty(date_received) or String.IsNullOrEmpty(accountCode) or String.IsNullOrEmpty(costCentre) or String.IsNullOrEmpty(Description)]" sap:VirtualizedContainerService.HintSize="2771.2,3883.2" sap2010:WorkflowViewState.IdRef="If_17">
                                       <If.Then>
-                                        <Sequence sap:VirtualizedContainerService.HintSize="1579.2,1427.2" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                                        <Sequence sap:VirtualizedContainerService.HintSize="1579.2,1446.4" sap2010:WorkflowViewState.IdRef="Sequence_31">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                           <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="1537.6,60" sap2010:WorkflowViewState.IdRef="MessageBox_17" Text="[&quot;email&quot;]" />
-                                          <If Condition="[String.IsNullOrEmpty(email)]" sap:VirtualizedContainerService.HintSize="1537.6,1134.4" sap2010:WorkflowViewState.IdRef="If_36">
+                                          <If Condition="[String.IsNullOrEmpty(email)]" sap:VirtualizedContainerService.HintSize="1537.6,1153.6" sap2010:WorkflowViewState.IdRef="If_36">
                                             <If.Then>
-                                              <If Condition="[emailPendingDetailDictionary.Keys.Contains(configInfo(&quot;AdminEmail&quot;))]" sap:VirtualizedContainerService.HintSize="723.2,464.8" sap2010:WorkflowViewState.IdRef="If_34">
+                                              <If Condition="[emailPendingDetailDictionary.Keys.Contains(configInfo(&quot;AdminEmail&quot;))]" sap:VirtualizedContainerService.HintSize="723.2,474.4" sap2010:WorkflowViewState.IdRef="If_34">
                                                 <If.Then>
                                                   <Sequence DisplayName="Assign Email Pending" sap:VirtualizedContainerService.HintSize="304,315.2" sap2010:WorkflowViewState.IdRef="Sequence_62">
                                                     <Sequence.Variables>
@@ -796,7 +798,7 @@
                                               </If>
                                             </If.Then>
                                             <If.Else>
-                                              <Sequence sap:VirtualizedContainerService.HintSize="770.4,984.8" sap2010:WorkflowViewState.IdRef="Sequence_67">
+                                              <Sequence sap:VirtualizedContainerService.HintSize="770.4,994.4" sap2010:WorkflowViewState.IdRef="Sequence_67">
                                                 <Sequence.Variables>
                                                   <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="allEmails" />
                                                 </Sequence.Variables>
@@ -806,20 +808,20 @@
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
                                                 <ui:Matches BuilderPattern="([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)" sap:VirtualizedContainerService.HintSize="728.8,60" sap2010:WorkflowViewState.IdRef="Matches_3" Input="[email]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9_-]+)&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)" RegexOption="IgnoreCase" Result="[allEmails]" />
-                                                <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="728.8,792" sap2010:WorkflowViewState.IdRef="ForEach`1_9" Values="[allEmails]">
+                                                <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="728.8,801.6" sap2010:WorkflowViewState.IdRef="ForEach`1_9" Values="[allEmails]">
                                                   <ui:ForEach.Body>
                                                     <ActivityAction x:TypeArguments="str:Match">
                                                       <ActivityAction.Argument>
                                                         <DelegateInArgument x:TypeArguments="str:Match" Name="emails" />
                                                       </ActivityAction.Argument>
-                                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="693.6,657.6" sap2010:WorkflowViewState.IdRef="Sequence_66">
+                                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="693.6,667.2" sap2010:WorkflowViewState.IdRef="Sequence_66">
                                                         <sap:WorkflowViewStateService.ViewState>
                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
                                                         <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="652,60" sap2010:WorkflowViewState.IdRef="MessageBox_32" Text="[emails]" />
-                                                        <If Condition="[emailPendingDetailDictionary.Keys.Contains(emails.ToString)]" sap:VirtualizedContainerService.HintSize="652,464.8" sap2010:WorkflowViewState.IdRef="If_35">
+                                                        <If Condition="[emailPendingDetailDictionary.Keys.Contains(emails.ToString)]" sap:VirtualizedContainerService.HintSize="652,474.4" sap2010:WorkflowViewState.IdRef="If_35">
                                                           <If.Then>
                                                             <Sequence DisplayName="Assign Existing email" sap:VirtualizedContainerService.HintSize="304,315.2" sap2010:WorkflowViewState.IdRef="Sequence_64">
                                                               <Sequence.Variables>
@@ -889,7 +891,7 @@
                                         </Sequence>
                                       </If.Then>
                                       <If.Else>
-                                        <Sequence sap:VirtualizedContainerService.HintSize="1106.4,3685.6" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                                        <Sequence sap:VirtualizedContainerService.HintSize="1148,3724" sap2010:WorkflowViewState.IdRef="Sequence_32">
                                           <Sequence.Variables>
                                             <Variable x:TypeArguments="x:String" Name="finalDepositID" />
                                           </Sequence.Variables>
@@ -898,7 +900,7 @@
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                          <If Condition="[accountCode.Trim =&quot;965601&quot;]" sap:VirtualizedContainerService.HintSize="1064.8,237.6" sap2010:WorkflowViewState.IdRef="If_19">
+                                          <If Condition="[accountCode.Trim =&quot;965601&quot;]" sap:VirtualizedContainerService.HintSize="1106.4,247.2" sap2010:WorkflowViewState.IdRef="If_19">
                                             <If.Then>
                                               <ui:ExcelWriteCell Cell="[&quot;O&quot; + cell.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_8" SheetName="T2 Incoming and unknown fund" Text="pending adjustment" />
                                             </If.Then>
@@ -906,9 +908,9 @@
                                               <ui:ExcelWriteCell Cell="[&quot;O&quot; + cell.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_7" SheetName="T2 Incoming and unknown fund" Text="Submitted" />
                                             </If.Else>
                                           </If>
-                                          <If Condition="[dateDepositDictionary.Keys.Contains(Convert.ToDateTime(date_received).ToString(&quot;ddMMyy&quot;))]" DisplayName="If -  Generate Deposit ID" sap:VirtualizedContainerService.HintSize="1064.8,2640" sap2010:WorkflowViewState.IdRef="If_29">
+                                          <If Condition="[dateDepositDictionary.Keys.Contains(Convert.ToDateTime(date_received).ToString(&quot;ddMMyy&quot;))]" DisplayName="If -  Generate Deposit ID" sap:VirtualizedContainerService.HintSize="1106.4,2659.2" sap2010:WorkflowViewState.IdRef="If_29">
                                             <If.Then>
-                                              <Sequence DisplayName="Increment Checksum" sap:VirtualizedContainerService.HintSize="687.2,2490.4" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                                              <Sequence DisplayName="Increment Checksum" sap:VirtualizedContainerService.HintSize="687.2,2500" sap2010:WorkflowViewState.IdRef="Sequence_48">
                                                 <Sequence.Variables>
                                                   <Variable x:TypeArguments="x:String" Name="prefix_checksum" />
                                                   <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(of string)]" Name="checksum_list" />
@@ -965,20 +967,20 @@
                                                     <InArgument x:TypeArguments="x:String">[checksum_list(0)]</InArgument>
                                                   </Assign.Value>
                                                 </Assign>
-                                                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="645.6,536.8" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[checksum_list]">
+                                                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="645.6,546.4" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[checksum_list]">
                                                   <ui:ForEach.Body>
                                                     <ActivityAction x:TypeArguments="x:String">
                                                       <ActivityAction.Argument>
                                                         <DelegateInArgument x:TypeArguments="x:String" Name="item" />
                                                       </ActivityAction.Argument>
-                                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="610.4,402.4" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="610.4,412" sap2010:WorkflowViewState.IdRef="Sequence_47">
                                                         <sap:WorkflowViewStateService.ViewState>
                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
                                                         <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="568.8,60" sap2010:WorkflowViewState.IdRef="MessageBox_28" Text="[item]" />
-                                                        <If Condition="[Convert.ToInt32(item) &gt; Convert.ToInt32(checksum_number)]" sap:VirtualizedContainerService.HintSize="568.8,209.6" sap2010:WorkflowViewState.IdRef="If_28">
+                                                        <If Condition="[Convert.ToInt32(item) &gt; Convert.ToInt32(checksum_number)]" sap:VirtualizedContainerService.HintSize="568.8,219.2" sap2010:WorkflowViewState.IdRef="If_28">
                                                           <If.Then>
                                                             <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_62">
                                                               <Assign.To>
@@ -1032,10 +1034,25 @@
                                               </Sequence>
                                             </If.Then>
                                             <If.Else>
-                                              <ui:ExcelWriteCell Cell="[&quot;P&quot; +  cell.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_13" SheetName="T2 Incoming and unknown fund" Text="[&quot;NY1&quot; + Convert.ToDateTime(date_received).ToString(&quot;ddMMyy&quot;) + depositID]" />
+                                              <Sequence sap:VirtualizedContainerService.HintSize="375.2,280.8" sap2010:WorkflowViewState.IdRef="Sequence_70">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_80">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="x:String">[finalDepositID]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="x:String">["NY1" + Convert.ToDateTime(date_received).ToString("ddMMyy") + depositID]</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                                <ui:ExcelWriteCell Cell="[&quot;P&quot; +  cell.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_13" SheetName="T2 Incoming and unknown fund" Text="[&quot;NY1&quot; + Convert.ToDateTime(date_received).ToString(&quot;ddMMyy&quot;) + depositID]" />
+                                              </Sequence>
                                             </If.Else>
                                           </If>
-                                          <If Condition="[IncomingFundRecord.Keys.Contains(Convert.ToDateTime(date_received).ToString(&quot;MM/dd/yyyy&quot;))]" DisplayName="If -  Extract Records for Deposit Journal" sap:VirtualizedContainerService.HintSize="1064.8,535.2" sap2010:WorkflowViewState.IdRef="If_37">
+                                          <If Condition="[IncomingFundRecord.Keys.Contains(Convert.ToDateTime(date_received).ToString(&quot;MM/dd/yyyy&quot;))]" DisplayName="If -  Extract Records for Deposit Journal" sap:VirtualizedContainerService.HintSize="1106.4,544.8" sap2010:WorkflowViewState.IdRef="If_37">
                                             <If.Then>
                                               <Sequence sap:VirtualizedContainerService.HintSize="375.2,385.6" sap2010:WorkflowViewState.IdRef="Sequence_68">
                                                 <Sequence.Variables>
